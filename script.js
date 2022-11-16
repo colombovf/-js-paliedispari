@@ -25,17 +25,27 @@ function verificaPalindroma (parola) {
 
 
 let numero_inserito = parseInt(prompt("Scegli se nserire un numero pari o dispari da 1 a 5:"));
-let numero_random = parseInt(Math.floor(Math.random() * 11 / 2));
-let somma_dei_numeri = numero_inserito + numero_random;
-console.log(numero_random);
-console.log(numero_inserito);
-console.log(somma_dei_numeri);
-console.log(verificaPariDispari(somma_dei_numeri));
+let numero_random = parseInt(Math.floor(Math.random() * 5 + 1));
+console.log("Il numero scelto dal computer: " + numero_random);
+console.log("Il numero scelto che hai scelto è: " + numero_inserito);
+console.log("La somma dei numeri scelti è: " + somma_dei_numeri);
+let scelta_PoD;
+
+do { 
+    scelta_PoD = prompt("Scegli pari o dispari");
+} while (scelta_PoD != "pari" && scelta_PoD != "dispari");
+
+
+console.log(verificaPariDispari(numero_inserito, numero_random, scelta_PoD));
 
 //-------------------------Creazione di funzioni-------------------------
-function verificaPariDispari(numero) {
-    if (numero % 2 == 0) {
-        return "Il numero è pari";
+function verificaPariDispari(numero1, numero2, scelta) {
+    let somma = numero1 + numero2;
+    if (somma % 2 == 0 && scelta == "pari") {
+        return "Il numero è pari, hai vinto!";
     }
-    return "Il numero è dispari";
+    if (somma % 2 != 0 && scelta == "dispari") {
+        return "Il numero è dispari, hai vinto!";
+    }
+    return "Ci dispiace ma hai perso!";
 }
